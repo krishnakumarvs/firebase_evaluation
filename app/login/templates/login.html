@@ -1,0 +1,26 @@
+<ion-view title={{pageTitle}}>
+	<ion-content class="login-page">
+		<div class="ion-content ">
+			<div class="row">
+			  <div class="col-10"></div>
+			  <div class="col">
+			  	<div class="col loginOrSignup">Login or Sign up</div><br>
+			  	<input type="text" class="userimage"ng-model="Login.currentUser.email" placeholder="User name"></input>
+			  	<br>
+			  	<input type="password" class="passwordimage"ng-model="Login.currentUser.password" placeholder="Password"></input>
+			  </div>
+			  <div class="col-10"></div>
+			</div> 
+			<div class="row button-margin login-top">
+			  	<div class="col-10"></div>
+			  	<div class="col">
+			  		<button class="button button-block button-royal button-login"ng-click="Login.authinticateUser()">LOGIN</button>
+			  	</div>
+			  	<div class="col-10"></div>
+			</div>	
+			<div class="row align-center">
+				<div class="col"ng-click="Login.SignUp()">Registeration</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
