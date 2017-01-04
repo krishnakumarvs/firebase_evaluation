@@ -19,12 +19,17 @@
 
     function TaskDataService(TaskClientDataService, TaskPersistenceDataService) {
         var taskDataService = {
-            storeTaskDetails: storeTaskDetails
+            storeTaskDetails: storeTaskDetails,
+            getCompany: getCompany
         };
         return taskDataService;
 
-        function storeTaskDetails(taskDetails){
+        function storeTaskDetails(taskDetails) {
             return TaskClientDataService.storeTaskDetails(taskDetails);
+        }
+
+        function getCompany() {
+            return TaskPersistenceDataService.getCompany();
         }
     }
 
@@ -32,14 +37,14 @@
 
     function TaskClientDataService($q, config) {
         var taskClientDataService = {
-            storeTaskDetails:storeTaskDetails
+            storeTaskDetails: storeTaskDetails
         };
         return taskClientDataService;
 
-         function storeTaskDetails(taskDetails){
+        function storeTaskDetails(taskDetails) {
             var defer = $q.defer();
-             defer.resolve(true);
-             return defer.promise;
+            defer.resolve(true);
+            return defer.promise;
         }
     }
 
@@ -47,7 +52,26 @@
 
     function TaskPersistenceDataService($q, config) {
         var newTaskPersistenceDataService = {
+            getCompany: getCompany
         };
         return newTaskPersistenceDataService;
+
+        function getCompany() {
+            var defer = $q.defer();
+            //defer.resolve("kakes");
+            var database = firebase.database().ref("companies");
+            var company = database.orderByChild("name").equalTo("TCS");
+            var query = company;
+            //var query = company.orderByChild("since").equalTo("1991");;
+            //query = company.equalTo(null);
+            
+            query.once("value", function(dataFetch) {
+                //console.log(dataFetch.val());
+                defer.resolve(dataFetch.val());
+            }, function(error) {
+                console.log(error);
+            });
+            return defer.promise;
+        }
     }
 })();

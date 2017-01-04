@@ -7,7 +7,7 @@
         <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/basic-style.css" rel="stylesheet">
-
+        <script src="lib/firebase/firebase.js"></script>
     </head>
     <body animation="slide-left-right-ios7">
         <ion-nav-view class="main-nav-view"></ion-nav-view>
@@ -15,6 +15,19 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+    <script src="lib/firebase/angularfire.min.js"></script>
+    <script>
+      // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
+      var config = {
+          apiKey: "AIzaSyBehzR5kpGoBAffkCXjqukKrxUDliVLSp4",
+          authDomain: "learnfirebase-7e100.firebaseapp.com",
+          databaseURL: "https://learnfirebase-7e100.firebaseio.com",
+          storageBucket: "learnfirebase-7e100.appspot.com",
+          messagingSenderId: "429980608519"
+        };
+      firebase.initializeApp(config);
+    </script>
 
     <!-- your app's js -->
     <script src="app/app.module.js"></script>
@@ -28,8 +41,7 @@
     <script src="app/homePage/controller/controller.js"></script>
     <script src="app/registration/controller/controller/controller.js"></script>
     <script src="app/settings/controller/controller.js"></script>
-    
-    <script src="app/shared/controller/Headercontroller.js"></script>
+    <script src="app/shared/controller/HeaderController.js"></script>
     
     
 

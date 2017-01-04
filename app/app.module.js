@@ -2,7 +2,7 @@ var appName = "Kakes";
 // Ionic Starter App
 
 
-angular.module(appName, ['ionic'])
+angular.module(appName, ['ionic', 'firebase'])
 
 .run(function($ionicPlatform, $rootScope, $state) {
     $rootScope.$state = $state;
